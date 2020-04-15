@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset = "utf-8"/>
+	<meta name = "viewport" content = "width=device-width, initial-scale=1"/>
+
+	<title>
+		Web Map Application
+	</title>
+
+		<!-- External Stylesheets -->
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+
+</head>
+
+<body>
+	<h1> <u>WEB MAP WITH CUSTOM POPUPS</u> </h1>
+
+	<!-- Add a Map div -->
+<div id="map" style="width: 1500px; height: 630px"></div>
+	<!-- Add the Leaflet JavaScript library -->
+	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+	<script>
+				// Create variable to hold map element, give initial settings to map
+			var map = L.map('map',{ center: [-1.09523,37.01474], zoom: 16});
+
+				// Add OpenStreetMap tile layer to map element
+			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+
+				// Create point feature for Gate C
+			var myDataPoint = L.marker([-1.09869,37.01174]).addTo(map);
+			// Bind popup to data point object
+			myDataPoint.bindPopup("<h4> Gate C </h4> <p> Has guards posted 24/7 <br> Entry is with a school ID </p>");
+
+				// Create point feature for Building next to SPA
+			var myDataPoint = L.marker([-1.09311,37.01513]).addTo(map);
+			// Bind popup to data point object
+			myDataPoint.bindPopup("<h4> Joint Building to SPA </h4> <p> Construction still ongoing. </p>");
+
+				// Create point feature for Delma Apartments
+			var myDataPoint = L.marker([-1.10044,37.01285]).addTo(map);
+			// Bind popup to data point object
+			myDataPoint.bindPopup("Delma Apartments");
+
+				// Create point feature for Adonai Apartments
+			var myDataPoint = L.marker([-1.10082,37.01309]).addTo(map);
+			// Bind popup to data point object
+			myDataPoint.bindPopup("Adonai Apartments");
+
+				// Create point feature for the New Finance Offices
+			var myDataPoint = L.marker([-1.09513,37.01596]).addTo(map);
+			// Bind popup to data point object
+			myDataPoint.bindPopup("<h4> New Finance Offices </h4> <p> Working in conjuction with the old Finance Offices. </p>");
+
+				// Create point feature for Technology House Parking Area
+			var myDataPoint = L.marker([-1.09477,37.01746]).addTo(map);
+			// Bind popup to data point object
+			myDataPoint.bindPopup("Parking Area");
+
+				// Create point feature for Park
+			var myDataPoint = L.marker([-1.09452,37.01561]).addTo(map);
+			// Bind popup to data point object
+			myDataPoint.bindPopup("Park");
+
+				// Create area feature for Swimming Pool, style and add to map
+			var myArea = L.polygon([[-1.09191,37.01500], [-1.09190,37.01521],
+    	[-1.09234,37.01522], [-1.09234,37.01502]],
+    	{color: 'blue', weight:2}).addTo(map);
+			// Bind popup to data polygon object
+			myArea.bindPopup("Swimming Pool");
+
+				// Create area feature for JKUAT Dam, style and add to map
+			var myArea = L.polygon([[-1.09152,37.01853], [-1.09274,37.01962],
+			[-1.09376,37.01896], [-1.09378,37.01781], [-1.09303,37.01747], [-1.09277,37.01740], [-1.09253,37.01728]],
+			{color: 'blue', weight: 2}).addTo(map);
+			// Bind  Bind popup to data polygon object
+			myArea.bindPopup("JKUAT Dam");
+
+				// Create area feature for Rugby Pitch, style and add to map
+			var myArea = L.polygon([[-1.08998,37.01431], [-1.08994,37.01493],
+			[-1.09131,37.01499], [-1.09134,37.01430]],
+			{color: 'blue', weight: 2}).addTo(map);
+			// Bind  Bind popup to data polygon object
+			myArea.bindPopup("Rugby Pitch");
+
+				// Create area feature for Football Pitch B, style and add to map
+			var myArea = L.polygon([[-1.09154,37.01626], [-1.09152,37.01685],
+			[-1.09243,37.01689], [-1.09246,37.01628]],
+			{color: 'blue', weight: 2}).addTo(map);
+			// Bind  Bind popup to data polygon object
+			myArea.bindPopup("Football Pitch B");
+
+			 // Create an Empty Popup
+      var popup = L.popup();
+
+      // Write function to set Properties of the Popup
+ 			function onMapClick(e) {
+    	popup
+        .setLatLng(e.latlng)
+        .setContent("Coordinate " + e.latlng.toString())
+        .openOn(map);
+														}
+
+			 // Listen for a click event on the Map element
+			 map.on('click', onMapClick);
+
+
+
+
+	</script>
+
+</body>
+
+</html>
